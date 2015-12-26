@@ -8,8 +8,7 @@
 
 class changeLog {
 public:
-	changeLog(unsigned int _id, timestamp _tc, unsigned char _type, double _lat,
-		double _lon, std::string _callSum, std::string _address);
+	changeLog(unsigned int _id, timestamp _ts, unsigned char _type, double _lat, double _lon, std::string _callSum, std::string _address);
 	changeLog();
 	~changeLog();
 
@@ -22,17 +21,17 @@ public:
 	std::string getAddress();
 
 	void  setid(unsigned int _id);
-	void  setTimeStamp(timestamp _ts);
-	void  setType(unsigned char _type);
-	void  setLat(double _lat);
-	void  setLon(double _lon);
-	void  setCallSum(std::string _callsum);
-	void  setAddress(std::string _address);
+	void  setTimeStamp(const timestamp & _ts);
+	void  setType(const unsigned char & _type);
+	void  setLat(const double & _lat);
+	void  setLon(const double & _lon);
+	void  setCallSum(const std::string & _callsum);
+	void  setAddress(const std::string & _address);
 
 private:
 	unsigned int id;
 
-	timestamp tc;
+	timestamp ts;
 	unsigned char type;
 
 	double lat;

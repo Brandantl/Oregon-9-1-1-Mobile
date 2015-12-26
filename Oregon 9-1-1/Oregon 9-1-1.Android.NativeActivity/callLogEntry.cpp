@@ -1,12 +1,14 @@
 #include "Oregon911.h"
 
-callLogEntry::callLogEntry(unsigned int _id, timestamp _tc, std::string _message)
+callLogEntry::callLogEntry(unsigned int _id, timestamp _ts, std::string _message)
 {
-
+	id = _id;
+	ts = _ts;
+	message = _message;
 }
 
 callLogEntry::callLogEntry() {
-
+	id = 0;
 }
 
 callLogEntry::~callLogEntry()
@@ -14,24 +16,32 @@ callLogEntry::~callLogEntry()
 
 }
 
+unsigned int callLogEntry::getid()
+{
+	return id;
+}
+
 std::string callLogEntry::getMessage()
 {
-	return std::string();
+	return message;
 }
 
 timestamp callLogEntry::getTimestamp()
 {
-	return timestamp();
+	return ts;
 }
 
-void callLogEntry::setid(unsigned int _id)
+void callLogEntry::setid(const unsigned int & _id)
 {
+	id = _id;
 }
 
-void callLogEntry::setMessage(std::string _message)
+void callLogEntry::setMessage(const std::string & _message)
 {
+	message = _message;
 }
 
-void callLogEntry::setTimestamp(timestamp _ts)
+void callLogEntry::setTimestamp(const timestamp & _ts)
 {
+	ts = _ts;
 }

@@ -6,25 +6,25 @@ class Incident {
 public:
 	callInfo		getCallInfo();
 
-	Unit			getUnit(unsigned int index);
-	callLogEntry	getCallLogEntry(unsigned int index);
-	changeLog		getChangeLog(unsigned int index);
+	Unit			getUnit(const unsigned int& index);
+	callLogEntry	getCallLogEntry(const unsigned int& index);
+	changeLog		getChangeLog(const unsigned int& index);
 
-	void addUnit(Unit thing);
-	void addCallLogEntry(callLogEntry thing);
-	void addChangeLog(changeLog thing);
+	void addUnit(const Unit& thing);
+	void addCallLogEntry(const callLogEntry& thing);
+	void addChangeLog(const changeLog& thing);
 
-	bool removeUnit(unsigned int index);
-	bool removeCallLogEntry(unsigned int index);
-	bool removeChangeLog(unsigned int index);
+	bool removeUnit(const unsigned int& index);
+	bool removeCallLogEntry(const unsigned int& index);
+	bool removeChangeLog(const unsigned int& index);
 
 	unsigned int getUnitCount();
 	unsigned int getChangeLogCount();
 	unsigned int getCallLogCount();
 
-	bool doesCallLogExist(unsigned int id);
-	bool doesUnitExist(unsigned int id);
-	bool doesChangeLogExist(unsigned int id);
+	bool doesCallLogExist(const unsigned int& id);
+	bool doesUnitExist(const unsigned int& id);
+	bool doesChangeLogExist(const unsigned int& id);
 	
 	unsigned int getMyId();
 private:

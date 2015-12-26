@@ -13,16 +13,16 @@ public:
 	Unit();
 	~Unit();
 
-	unsigned int getId();
+	unsigned int getid();
 	std::string getName();
 	std::string getAgency();
 	std::string getStation();
-	std::string getStatus(unsigned int status);
+	std::string getStatus(const unsigned int& _status);
 
-	void getName(std::string _name);
-	void getAgency(std::string _agency);
-	void getStation(std::string _station);
-	void setStatus(unsigned int index, std::string status);
+	void setName(const std::string& _name);
+	void setAgency(const std::string& _agency);
+	void setStation(const std::string& _station);
+	void setStatus(const unsigned int& _status, const std::string& _value);
 private:
 	unsigned int id;
 	std::string name;

@@ -5,50 +5,59 @@ Unit::Unit(unsigned int _id, std::string _name, std::string _agency, std::string
 }
 
 Unit::Unit() {
-
+	id = 0;
 }
 
 Unit::~Unit()
 {
 }
 
-unsigned int Unit::getId()
+unsigned int Unit::getid()
 {
-	return 0;
+	return id;
 }
 
 std::string Unit::getName()
 {
-	return std::string();
+	return name;
 }
 
 std::string Unit::getAgency()
 {
-	return std::string();
+	return agency;
 }
 
 std::string Unit::getStation()
 {
-	return std::string();
+	return station;
 }
 
-void Unit::getName(std::string _name)
+void Unit::setName(const std::string& _name)
 {
+	name = _name;
 }
 
-void Unit::getAgency(std::string _agency)
+void Unit::setAgency(const std::string& _agency)
 {
+	agency = _agency;
 }
 
-void Unit::getStation(std::string _station)
+void Unit::setStation(const std::string& _station)
 {
+	station = _station;
 }
 
-void Unit::setStatus(unsigned int index, std::string status)
+void Unit::setStatus(const unsigned int& _status, const std::string& _value)
 {
+	if (_status < MAX_STATUS) {
+		status[_status] = _value;
+	}
 }
 
-std::string Unit::getStatus(unsigned int status)
+std::string Unit::getStatus(const unsigned int& _status)
 {
+	if (_status < MAX_STATUS) {
+		return status[_status];
+	}
 	return std::string();
 }

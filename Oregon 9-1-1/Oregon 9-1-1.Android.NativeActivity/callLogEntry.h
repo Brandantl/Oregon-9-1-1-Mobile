@@ -4,16 +4,17 @@
 
 class callLogEntry {
 public:
-	callLogEntry(unsigned int _id, timestamp _tc, std::string _message);
+	callLogEntry(unsigned int _id, timestamp _ts, std::string _message);
 	callLogEntry();
 	~callLogEntry();
 
+	unsigned int	getid();
 	std::string getMessage();
 	timestamp getTimestamp();
 
-	void setid(unsigned int _id);
-	void setMessage(std::string _message);
-	void setTimestamp(timestamp _ts);
+	void setid(const unsigned int & _id);
+	void setMessage(const std::string & _message);
+	void setTimestamp(const timestamp & _ts);
 private:
 	unsigned int id;
 	timestamp ts;
