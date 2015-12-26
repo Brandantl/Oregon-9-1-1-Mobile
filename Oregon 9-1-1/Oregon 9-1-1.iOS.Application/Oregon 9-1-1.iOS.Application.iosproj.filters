@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Images.xcassets">
+      <UniqueIdentifier>{e6e2e754-1d2e-4149-8564-da470406e8bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oregon 9-1-1.iOS">
+      <UniqueIdentifier>{32afc8f0-fb08-4dc0-9e02-f7cbbb895665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Oregon 9-1-1.iOS\Supporting Files">
+      <UniqueIdentifier>{321534e6-c5ea-4ed5-9e4f-12b97622b8ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Products">
+      <UniqueIdentifier>{44e236eb-490e-4fdc-bf0d-1023bbd51fe8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Oregon 9-1-1.iOS\AppDelegate.h">
+      <Filter>Oregon 9-1-1.iOS</Filter>
+    </ClInclude>
+    <ClInclude Include="Oregon 9-1-1.iOS\GameViewController.h">
+      <Filter>Oregon 9-1-1.iOS</Filter>
+    </ClInclude>
+    <Content Include="Oregon 9-1-1.iOS\Base.lproj\Main.storyboard">
+      <Filter>Oregon 9-1-1.iOS</Filter>
+    </Content>
+    <Content Include="Oregon 9-1-1.iOS\Images.xcassets\AppIcon.appiconset\Contents.json">
+      <Filter>Images.xcassets</Filter>
+    </Content>
+    <None Include="Oregon 9-1-1.iOS\Info.plist">
+      <Filter>Oregon 9-1-1.iOS\Supporting Files</Filter>
+    </None>
+    <ObjCCompile Include="Oregon 9-1-1.iOS\AppDelegate.mm">
+      <Filter>Oregon 9-1-1.iOS</Filter>
+    </ObjCCompile>
+    <ObjCCompile Include="Oregon 9-1-1.iOS\GameViewController.mm">
+      <Filter>Oregon 9-1-1.iOS</Filter>
+    </ObjCCompile>
+    <ObjCCompile Include="Oregon 9-1-1.iOS\main.mm">
+      <Filter>Oregon 9-1-1.iOS\Supporting Files</Filter>
+    </ObjCCompile>
+  </ItemGroup>
+</Project>

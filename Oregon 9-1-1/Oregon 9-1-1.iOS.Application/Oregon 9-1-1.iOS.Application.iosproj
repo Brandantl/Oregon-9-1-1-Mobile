@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <ProjectVersion>1.0</ProjectVersion>
+    <ProjectGuid>{58081d70-c50c-4f14-8f19-dc2f93d2d132}</ProjectGuid>
+    <RootNamespace>Oregon_9_1_1</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(iOSTargetsPath)\iOS.Default.props" />
+  <PropertyGroup Label="Configuration" />
+  <Import Project="$(iOSTargetsPath)\iOS.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <ClInclude Include="Oregon 9-1-1.iOS\AppDelegate.h" />
+    <ClInclude Include="Oregon 9-1-1.iOS\GameViewController.h" />
+    <Content Include="Oregon 9-1-1.iOS\Base.lproj\Main.storyboard" />
+    <Content Include="Oregon 9-1-1.iOS\Images.xcassets\AppIcon.appiconset\Contents.json" />
+    <None Include="Oregon 9-1-1.iOS\Info.plist" />
+    <ObjCCompile Include="Oregon 9-1-1.iOS\AppDelegate.mm" />
+    <ObjCCompile Include="Oregon 9-1-1.iOS\GameViewController.mm" />
+    <ObjCCompile Include="Oregon 9-1-1.iOS\main.mm" />
+  </ItemGroup>
+  <ItemGroup>
+    <pbxproj Include="Oregon 9-1-1.iOS.Application.xcodeproj\project.pbxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Oregon 9-1-1.iOS.StaticLibrary\Oregon 9-1-1.iOS.StaticLibrary.vcxproj">
+      <Project>{b54e8a4d-4b34-413b-aa14-89e8eabf647b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(iOSTargetsPath)\iOS.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
