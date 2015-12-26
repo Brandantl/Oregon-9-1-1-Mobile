@@ -236,11 +236,6 @@
     <ClCompile Include="android_native_app_glue.c" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Oregon 9-1-1.Android.StaticLibrary\Oregon 9-1-1.Android.StaticLibrary.vcxproj">
-      <Project>{e5a1a12f-b3e2-454b-a39d-945e8badb5ef}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
