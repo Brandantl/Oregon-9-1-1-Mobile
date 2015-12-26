@@ -3,9 +3,38 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="android_native_app_glue.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\callInfo.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\callLogEntry.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\changeLog.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Incident.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\IncidentList.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Oregon911.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\timestamp.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Unit.h">
+      <Filter>Oregon 911 Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="android_native_app_glue.c" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Oregon 911 Base">
+      <UniqueIdentifier>{2de8b0f0-8859-4c0c-b787-8fb0755cba2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -219,6 +219,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\callInfo.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\callLogEntry.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\changeLog.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Incident.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\IncidentList.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Oregon911.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\timestamp.h" />
+    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Unit.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="android_native_app_glue.h" />
   </ItemGroup>
