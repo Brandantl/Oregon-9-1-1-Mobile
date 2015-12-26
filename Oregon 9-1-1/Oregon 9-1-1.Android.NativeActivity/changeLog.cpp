@@ -1,8 +1,7 @@
 #include "Oregon911.h"
 
-changeLog::changeLog(timestamp _tc, unsigned char _type, double _lat, double _lon, std::string _callSum, std::string _address)
+changeLog::changeLog(unsigned int _id, timestamp _tc, unsigned char _type, double _lat, double _lon, std::string _callSum, std::string _address)
 {
-
 }
 
 changeLog::changeLog() {
@@ -12,6 +11,11 @@ changeLog::changeLog() {
 changeLog::~changeLog()
 {
 
+}
+
+unsigned int changeLog::getid()
+{
+	return 0;
 }
 
 timestamp changeLog::getTimeStamp()
@@ -42,6 +46,10 @@ std::string changeLog::getCallSum()
 std::string changeLog::getAddress()
 {
 	return std::string();
+}
+
+void changeLog::setid(unsigned int _id)
+{
 }
 
 void changeLog::setTimeStamp(timestamp _ts)
