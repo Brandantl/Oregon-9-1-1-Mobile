@@ -11,14 +11,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Oregon 9-1-1.Android.Native
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{22B77265-61C6-4ED7-ADCE-AF13C54D5883}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Oregon 9-1-1.Shared", "Oregon 9-1-1\Oregon 9-1-1.Shared\Oregon 9-1-1.Shared.vcxitems", "{F7898E66-672E-4941-8FB2-D7EC63439570}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Oregon 9-1-1.Android.StaticLibrary", "Oregon 9-1-1\Oregon 9-1-1.Android.StaticLibrary\Oregon 9-1-1.Android.StaticLibrary.vcxproj", "{E5A1A12F-B3E2-454B-A39D-945E8BADB5EF}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Oregon 9-1-1\Oregon 9-1-1.Shared\Oregon 9-1-1.Shared.vcxitems*{e5a1a12f-b3e2-454b-a39d-945e8badb5ef}*SharedItemsImports = 4
-		Oregon 9-1-1\Oregon 9-1-1.Shared\Oregon 9-1-1.Shared.vcxitems*{f7898e66-672e-4941-8fb2-d7ec63439570}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -94,7 +91,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{03C2A633-F2A7-411C-85CB-BC420BB6CE17} = {3977527C-1446-48EF-8CF7-4FA3514AE1CD}
 		{501C1D6B-5262-4DD8-BF20-56D8BC1D8506} = {3977527C-1446-48EF-8CF7-4FA3514AE1CD}
-		{F7898E66-672E-4941-8FB2-D7EC63439570} = {22B77265-61C6-4ED7-ADCE-AF13C54D5883}
 		{E5A1A12F-B3E2-454B-A39D-945E8BADB5EF} = {22B77265-61C6-4ED7-ADCE-AF13C54D5883}
 	EndGlobalSection
 EndGlobal
