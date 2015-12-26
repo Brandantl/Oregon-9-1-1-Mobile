@@ -8,6 +8,9 @@
     <!-- This is the platform API where NativeActivity was introduced. -->
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="19"/>
 
+     <!-- Internet -->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+  
     <!-- This .apk has no Java code itself, so set hasCode to false. -->
     <application android:label="@string/app_name" android:hasCode="false" android:debuggable="true">
 

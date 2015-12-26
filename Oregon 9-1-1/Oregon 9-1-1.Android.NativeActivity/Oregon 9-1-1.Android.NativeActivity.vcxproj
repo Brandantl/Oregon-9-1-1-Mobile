@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\openssl.1.0.1.21\build\native\openssl.props" Condition="Exists('..\..\packages\openssl.1.0.1.21\build\native\openssl.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|ARM">
       <Configuration>Debug</Configuration>
@@ -67,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>Clang_3_6</PlatformToolset>
+    <PlatformToolset>Gcc_4_9</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -153,9 +154,11 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <ExceptionHandling>Enabled</ExceptionHandling>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LibraryDependencies>%(LibraryDependencies);GLESv2;EGL;m</LibraryDependencies>
+      <LibraryDependencies>%(LibraryDependencies)</LibraryDependencies>
+      <SharedLibrarySearchPath>G:\Users\Brandan\Documents\Poco-Linux\poco-1.6.1\lib\CYGWIN\x86_64;%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -165,9 +168,11 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <ExceptionHandling>Enabled</ExceptionHandling>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LibraryDependencies>%(LibraryDependencies);GLESv2;EGL;m</LibraryDependencies>
+      <LibraryDependencies>%(LibraryDependencies)</LibraryDependencies>
+      <SharedLibrarySearchPath>G:\Users\Brandan\Documents\Poco-Linux\poco-1.6.1\lib\CYGWIN\x86_64;%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -220,10 +225,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Call.h" />
-    <ClInclude Include="CallInfo.h" />
+    <ClInclude Include="callInfo.h" />
     <ClInclude Include="callLog.h" />
     <ClInclude Include="callLogEntry.h" />
     <ClInclude Include="changeLog.h" />
+    <ClInclude Include="Data.h" />
+    <ClInclude Include="Driver.h" />
     <ClInclude Include="Incident.h" />
     <ClInclude Include="IncidentList.h" />
     <ClInclude Include="Oregon911.h" />
@@ -234,9 +241,43 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="android_native_app_glue.c" />
+    <ClCompile Include="callInfo.cpp" />
+    <ClCompile Include="callLogEntry.cpp" />
+    <ClCompile Include="changeLog.cpp" />
+    <ClCompile Include="Data.cpp" />
+    <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Incident.cpp" />
+    <ClCompile Include="IncidentList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="timestamp.cpp" />
+    <ClCompile Include="Unit.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\..\packages\boost.1.60.0.0\build\native\boost.targets" Condition="Exists('..\..\packages\boost.1.60.0.0\build\native\boost.targets')" />
+    <Import Project="..\..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets" Condition="Exists('..\..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets')" />
+    <Import Project="..\..\packages\libssh2.redist.1.4.3.1\build\native\libssh2.redist.targets" Condition="Exists('..\..\packages\libssh2.redist.1.4.3.1\build\native\libssh2.redist.targets')" />
+    <Import Project="..\..\packages\openssl.redist.1.0.1.25\build\native\openssl.redist.targets" Condition="Exists('..\..\packages\openssl.redist.1.0.1.25\build\native\openssl.redist.targets')" />
+    <Import Project="..\..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets" Condition="Exists('..\..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets')" />
+    <Import Project="..\..\packages\zlib.1.2.8.1\build\native\zlib.targets" Condition="Exists('..\..\packages\zlib.1.2.8.1\build\native\zlib.targets')" />
+    <Import Project="..\..\packages\openssl.1.0.1.21\build\native\openssl.targets" Condition="Exists('..\..\packages\openssl.1.0.1.21\build\native\openssl.targets')" />
+    <Import Project="..\..\packages\libssh2.1.4.3.1\build\native\libssh2.targets" Condition="Exists('..\..\packages\libssh2.1.4.3.1\build\native\libssh2.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\boost.1.60.0.0\build\native\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\boost.1.60.0.0\build\native\boost.targets'))" />
+    <Error Condition="!Exists('..\..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\curl.redist.7.30.0.2\build\native\curl.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\libssh2.redist.1.4.3.1\build\native\libssh2.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\libssh2.redist.1.4.3.1\build\native\libssh2.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\openssl.redist.1.0.1.25\build\native\openssl.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\openssl.redist.1.0.1.25\build\native\openssl.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\zlib.1.2.8.1\build\native\zlib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\zlib.1.2.8.1\build\native\zlib.targets'))" />
+    <Error Condition="!Exists('..\..\packages\openssl.1.0.1.21\build\native\openssl.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\openssl.1.0.1.21\build\native\openssl.props'))" />
+    <Error Condition="!Exists('..\..\packages\openssl.1.0.1.21\build\native\openssl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\openssl.1.0.1.21\build\native\openssl.targets'))" />
+    <Error Condition="!Exists('..\..\packages\libssh2.1.4.3.1\build\native\libssh2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\libssh2.1.4.3.1\build\native\libssh2.targets'))" />
+  </Target>
 </Project>
