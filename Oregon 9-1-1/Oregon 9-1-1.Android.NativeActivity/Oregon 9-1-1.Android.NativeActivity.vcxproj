@@ -219,16 +219,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\callInfo.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\callLogEntry.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\changeLog.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Incident.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\IncidentList.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Oregon911.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\timestamp.h" />
-    <ClInclude Include="..\..\..\Oregon 911 App BAse\Oregon 911 App BAse\Unit.h" />
+    <ClInclude Include="Call.h" />
+    <ClInclude Include="CallInfo.h" />
+    <ClInclude Include="callLog.h" />
+    <ClInclude Include="callLogEntry.h" />
+    <ClInclude Include="changeLog.h" />
+    <ClInclude Include="Incident.h" />
+    <ClInclude Include="IncidentList.h" />
+    <ClInclude Include="Oregon911.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="android_native_app_glue.h" />
+    <ClInclude Include="timestamp.h" />
+    <ClInclude Include="Unit.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="android_native_app_glue.c" />
