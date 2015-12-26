@@ -1,11 +1,10 @@
 #pragma once
-#include <string>
 #include "Oregon911.h"
 
 class callInfo {
 public:
-
-
+	callInfo();
+	~callInfo();
 private:
 	unsigned int id;
 	std::string callSum;

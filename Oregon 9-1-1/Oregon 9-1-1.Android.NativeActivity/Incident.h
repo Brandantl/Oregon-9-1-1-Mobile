@@ -4,7 +4,7 @@
 
 class Incident {
 public:
-	callInfo getCallInfo();
+	callInfo		getCallInfo();
 
 	Unit			getUnit(unsigned int index);
 	callLogEntry	getCallLogEntry(unsigned int index);
