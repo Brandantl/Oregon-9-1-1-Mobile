@@ -68,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>Gcc_4_9</PlatformToolset>
+    <PlatformToolset>Clang_3_6</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -154,11 +154,14 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <ExceptionHandling>Enabled</ExceptionHandling>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Libs\curl-android-ndk-master\libcurl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LibraryDependencies>%(LibraryDependencies)</LibraryDependencies>
-      <SharedLibrarySearchPath>G:\Users\Brandan\Documents\Poco-Linux\poco-1.6.1\lib\CYGWIN\x86_64;%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <LibraryDependencies>curl;%(LibraryDependencies)</LibraryDependencies>
+      <SharedLibrarySearchPath>
+      </SharedLibrarySearchPath>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Libs\curl-android-ndk-master\libcurl\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -168,11 +171,14 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <ExceptionHandling>Enabled</ExceptionHandling>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Libs\curl-android-ndk-master\libcurl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LibraryDependencies>%(LibraryDependencies)</LibraryDependencies>
-      <SharedLibrarySearchPath>G:\Users\Brandan\Documents\Poco-Linux\poco-1.6.1\lib\CYGWIN\x86_64;%(SharedLibrarySearchPath)</SharedLibrarySearchPath>
+      <LibraryDependencies>curl;%(LibraryDependencies)</LibraryDependencies>
+      <SharedLibrarySearchPath>
+      </SharedLibrarySearchPath>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Libs\curl-android-ndk-master\libcurl\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -224,7 +230,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Call.h" />
     <ClInclude Include="callInfo.h" />
     <ClInclude Include="callLog.h" />
     <ClInclude Include="callLogEntry.h" />
@@ -238,6 +243,7 @@
     <ClInclude Include="android_native_app_glue.h" />
     <ClInclude Include="timestamp.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="android_native_app_glue.c" />
@@ -251,6 +257,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="timestamp.cpp" />
     <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
