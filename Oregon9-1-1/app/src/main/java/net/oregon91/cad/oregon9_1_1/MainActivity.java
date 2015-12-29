@@ -9,15 +9,15 @@ import android.widget.ListView;
 
 import cad.oregon911.net.Incident;
 import cad.oregon911.net.IncidentManager;
+import cad.oregon911.net.Oregon911;
 import cad.oregon911.net.callinfo;
 import cad.oregon911.net.timestamp;
 
 public class MainActivity extends AppCompatActivity {
-
-    IncidentManager intman;
+    Oregon911 OR911;
 
     public MainActivity() {
-        intman = new IncidentManager();
+        OR911 = new Oregon911();
     }
 
     @Override
@@ -25,9 +25,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createTestCalls();
+        createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
+        createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
+        createTestCall(151204893, "Detector Problem", "Singletree St & Doubletree St", new timestamp(2015, 11, 28, 18, 1, 30), "FGF");
+        createTestCall(151204893, "Sick Person/Unko", "18th Av & 19th Av", new timestamp(2015, 12, 25, 18, 1, 30), "FGF");
+        createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
+        createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
+        createTestCall(151204893, "Detector Problem", "Singletree St & Doubletree St", new timestamp(2015,11,28,18,1,30), "FGF" );
+        createTestCall(151204893, "Sick Person/Unko", "18th Av & 19th Av", new timestamp(2015,12,25,18,1,30), "FGF" );
+        createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
+        createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
+        createTestCall(151204893, "Detector Problem", "Singletree St & Doubletree St", new timestamp(2015,11,28,18,1,30), "FGF" );
+        createTestCall(151204893, "Sick Person/Unko", "18th Av & 19th Av", new timestamp(2015,12,25,18,1,30), "FGF" );
 
-        ListAdapter CallListAdapt = new CallListAdapter(this,intman.getList() );
+        ListAdapter CallListAdapt = new CallListAdapter(this,OR911.getIntMan().getList() );
         ListView CLV = (ListView) findViewById(R.id.CallListView);
         CLV.setAdapter(CallListAdapt);
 
@@ -35,26 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void createTestCalls() {
-        // Get Data from class
-        int    single_callNumber = 1010101;
-        String single_callSum = "CARDIAC ARREST";
-        String single_station = "BVM";
-        String single_timedate = "2015-12-28 17:45:44";
-        String single_address = "NW 229TH AV & DEAD END";
-        String single_units = "<font color=\"" + ContextCompat.getColor(this, R.color.enroute) + "\">" + "MW80" + "</font>";
-
+    private void createTestCall(int callNumber, String callSum, String address, timestamp ts, String station) {
         Incident oops = new Incident();
         callinfo callheader = new callinfo();
-
-        timestamp ts = new timestamp(2015,12,28,18,1,30);
-        callheader.setCallNumber(single_callNumber);
-        callheader.setCallSum(single_callSum);
-        callheader.setAddress(single_address);
-        callheader.setStation(single_station);
+        callheader.setCallNumber(callNumber);
+        callheader.setCallSum(callSum);
+        callheader.setAddress(address);
+        callheader.setStation(station);
         callheader.setTs(ts);
         oops.setCallInfo(callheader);
-        intman.addIncident(oops);
+        OR911.getIntMan().addIncident(oops);
     }
 
 }
