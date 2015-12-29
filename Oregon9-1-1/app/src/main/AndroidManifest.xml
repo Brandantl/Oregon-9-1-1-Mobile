@@ -17,5 +17,5 @@
         </activity>
         <activity android:name="cad.oregon911.net.MainActivity"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

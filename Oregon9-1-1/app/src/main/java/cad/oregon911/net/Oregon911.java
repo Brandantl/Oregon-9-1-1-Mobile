@@ -17,6 +17,9 @@ public class Oregon911 {
 
     public void updateIncidentManager() {
 
+
+
+
     }
 
     public IncidentManager getIntMan() {
@@ -28,4 +31,5 @@ public class Oregon911 {
     }
 
     private IncidentManager IntMan;
+    private String APIUrl = "http://www.api.oregon911.net/api/1.0/?method=getAndroidData&key=android&type=JSON";
 }

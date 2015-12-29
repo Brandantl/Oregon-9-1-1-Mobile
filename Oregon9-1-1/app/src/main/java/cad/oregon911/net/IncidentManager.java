@@ -39,7 +39,16 @@ public class IncidentManager {
         return List.size();
     }
 
-    public boolean doesIncidentExist(int index) {
+    public boolean doesIncidentExistByIndex(int index) {
+        return false;
+    }
+
+    public boolean doesIncidentExistByCallNumber(int callNumber) {
+        for (int i = 0; i < List.size(); i++) {
+            if (List.get(i).getCallInfo().getCallNumber() == callNumber) {
+                return true;
+            }
+        }
         return false;
     }
 

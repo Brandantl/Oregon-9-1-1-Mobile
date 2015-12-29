@@ -1,20 +1,26 @@
 package net.oregon91.cad.oregon9_1_1;
 
-import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import org.json.JSONArray;
+
+import java.util.concurrent.ExecutionException;
+
+import cad.oregon911.net.HTTP;
 import cad.oregon911.net.Incident;
-import cad.oregon911.net.IncidentManager;
 import cad.oregon911.net.Oregon911;
 import cad.oregon911.net.callinfo;
 import cad.oregon911.net.timestamp;
 
 public class MainActivity extends AppCompatActivity {
     Oregon911 OR911;
+
+    // **** TESTING TESTING TESTING **** ///
+    private static String url = "http://www.api.oregon911.net/api/1.0/?method=getAndroidData&key=android&type=JSON";
+    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- ///
 
     public MainActivity() {
         OR911 = new Oregon911();
@@ -24,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // **** TESTING TESTING TESTING **** ///
+
+        // Gets the complete JSON from OREGON 911 API
+        HTTP thing = new HTTP(this);
+        String responce = "HI!";
+        try {
+            responce = thing.execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- ///
 
         createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
         createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
