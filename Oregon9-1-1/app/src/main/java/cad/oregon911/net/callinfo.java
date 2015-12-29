@@ -14,15 +14,17 @@ public class callinfo {
         ts = new timestamp();
     }
 
-    public callinfo(int id, String callSum, int callNumber, String address, String agency, String station, String units, int unitCount, boolean active, double lat, double lon, timestamp ts) {
+    public callinfo(int id, String callSum, int callNumber, String address, String agency, String station, String units, String flags, boolean active, double lat, double lon,char county, char type, timestamp ts) {
         this.id = id;
         this.callSum = callSum;
         this.callNumber = callNumber;
+        this.type = type;
         this.address = address;
+        this.county = county;
         this.agency = agency;
         this.station = station;
         this.units = units;
-        this.unitCount = unitCount;
+        this.flags = flags;
         this.active = active;
         this.lat = lat;
         this.lon = lon;
@@ -85,14 +87,6 @@ public class callinfo {
         this.units = units;
     }
 
-    public int getUnitCount() {
-        return unitCount;
-    }
-
-    public void setUnitCount(int unitCount) {
-        this.unitCount = unitCount;
-    }
-
     public boolean isActive() {
         return active;
     }
@@ -125,6 +119,32 @@ public class callinfo {
         this.ts = ts;
     }
 
+    public String getFlags() {
+        return flags;
+    }
+
+    public void setFlags(String flags) {
+        this.flags = flags;
+    }
+
+    public char getCounty() {
+        return county;
+    }
+
+    public void setCounty(char county) {
+        this.county = county;
+    }
+
+    private char   type;
+
+    public char getType() {
+        return type;
+    }
+
+    public void setType(char type) {
+        this.type = type;
+    }
+
     private int id;
     private String callSum;
     private int callNumber;
@@ -132,9 +152,10 @@ public class callinfo {
     private String agency;
     private String station;
     private String units;
-    private int unitCount;
+    private String flags;
     private boolean active;
     private double lat;
     private double lon;
+    private char county;
     private timestamp ts;
 }

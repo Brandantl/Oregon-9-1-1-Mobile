@@ -19,11 +19,6 @@ public class Oregon911 {
 
     }
 
-
-
-
-
-
     public IncidentManager getIntMan() {
         return IntMan;
     }
