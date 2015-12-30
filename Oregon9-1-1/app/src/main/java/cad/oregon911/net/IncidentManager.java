@@ -45,6 +45,17 @@ public class IncidentManager {
         return false;
     }
 
+    public void updateIncident(Incident thing) {
+        for (int i = 0; i < List.size(); i++) {
+            if ( thing.getMyID() == List.get(i).getMyID()) {
+                List.set(i,thing);
+                return;
+            }
+        }
+        addIncident(thing);
+    }
+
+
     public boolean doesIncidentExistByCallNumber(int callNumber, char county) {
         for (int i = 0; i < List.size(); i++) {
             if (
@@ -68,6 +79,27 @@ public class IncidentManager {
         }
         return null;
     }
+
+
+
+    public int getIncidentIndex(int callNumber, char county) {
+        for (int i = 0; i < List.size(); i++) {
+            if (
+                    List.get(i).getCallInfo().getCallNumber() == callNumber &&
+                            List.get(i).getCallInfo().getCounty() == county
+                    ) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void setIncidentByIndex(int index, Incident thing) {
+        if ((List.size() < index) && (List.size() > -1)) {
+            List.set(index,thing);
+        }
+    }
+
 
     public boolean removeCallByCallNumber(int callNumber, char county) {
         for (int i = 0; i < List.size(); i++) {

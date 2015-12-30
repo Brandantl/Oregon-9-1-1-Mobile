@@ -58,6 +58,16 @@ public class Incident {
         UnitList = unitList;
     }
 
+    public void updateUnit(unit thing) {
+        for (int i = 0; i < UnitList.size(); i++) {
+            if ( thing.getName().equals(UnitList.get(i).getName())) {
+                UnitList.get(i).setStatus(thing.getStatus());
+                return;
+            }
+        }
+        addUnit(thing);
+    }
+
     public void addUnit(unit Thing) {
         UnitList.add(Thing);
     }

@@ -69,7 +69,8 @@ public class Oregon911 {
             if (callheader.has("W")) {
                 ArrayList<Incident> WC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("W"), 'W');
                 for (int i = 0; i < WC_CALLS.size(); i++) {
-                    IntMan.addIncident(WC_CALLS.get(i));
+                    Incident call  = WC_CALLS.get(i);
+                    IntMan.updateIncident(call);
                 }
             }
 
@@ -77,7 +78,8 @@ public class Oregon911 {
             if (callheader.has("C")) {
                 ArrayList<Incident> CC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("C"), 'C');
                 for (int i = 0; i < CC_CALLS.size(); i++) {
-                    IntMan.addIncident(CC_CALLS.get(i));
+                    Incident call  = CC_CALLS.get(i);
+                    IntMan.updateIncident(call);
                 }
             }
         } catch (JSONException e) {
@@ -98,7 +100,7 @@ public class Oregon911 {
                         int callNumber = Integer.parseInt(key);
                         ArrayList<unit> unitList = utils.ReadJSONUnitList(county.getJSONObject(key));
                         for (int i = 0; i < unitList.size(); i++) {
-                            IntMan.getCallByCallNumber(callNumber, 'W').addUnit(unitList.get(i));
+                            IntMan.getCallByCallNumber(callNumber, 'W').updateUnit(unitList.get(i));
                         }
                     }
                 }
@@ -113,7 +115,7 @@ public class Oregon911 {
                         int callNumber = Integer.parseInt(key);
                         ArrayList<unit> unitList = utils.ReadJSONUnitList(county.getJSONObject(key));
                         for (int i = 0; i < unitList.size(); i++) {
-                            IntMan.getCallByCallNumber(callNumber, 'C').addUnit(unitList.get(i));
+                            IntMan.getCallByCallNumber(callNumber, 'C').updateUnit(unitList.get(i));
                         }
                     }
                 }
