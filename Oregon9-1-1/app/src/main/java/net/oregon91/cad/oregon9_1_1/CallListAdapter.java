@@ -46,7 +46,6 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         TextView text_timedate = (TextView) customView.findViewById(R.id.call_timedate);
         TextView text_unitlist = (TextView) customView.findViewById(R.id.call_unitlist);
 
-        ImageView call_image = (ImageView) customView.findViewById(R.id.call_image);
         LinearLayout  call_banner = (LinearLayout) customView.findViewById(R.id.call_banner);
 
         text_callSum.setText(single_callSum);

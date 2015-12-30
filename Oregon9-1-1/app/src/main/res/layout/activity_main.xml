@@ -18,5 +18,6 @@
             android:id="@+id/CallListView"
             android:smoothScrollbar="false"
             android:fillViewport="true"/>
+
     </FrameLayout>
 </RelativeLayout>

@@ -39,77 +39,83 @@
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:padding="10dp"
-                    android:layout_weight="0.35">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:id="@+id/call_image"
-                        android:layout_gravity="center"
-                        android:background="#747474" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:paddingTop="6dp"
-                    android:layout_weight="0.23">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="6dp"
+                            android:layout_weight="0.1"
+                            android:paddingLeft="6dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="CARDIAC ARREST"
-                        android:id="@+id/call_text"
-                        android:textStyle="bold"
-                        android:textColor="#000000" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="CARDIAC ARREST"
+                                android:id="@+id/call_text"
+                                android:textStyle="bold"
+                                android:textColor="#000000" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/call_timedate"
-                        android:text="2015-12-28 17:01:27" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:id="@+id/call_timedate"
+                                android:text="2015-12-28 17:01:27" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="17911 NW Evergreen Pkwy"
-                        android:id="@+id/call_address" />
+                        </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:id="@+id/call_unitlist"
-                        android:text="E05, E62, MW80, MED62" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="6dp"
+                            android:layout_weight="0.419">
 
-                </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="BVM"
+                                android:id="@+id/call_station"
+                                android:layout_gravity="center_horizontal"
+                                android:textStyle="bold|italic"
+                                android:paddingRight="5dp" />
+                        </LinearLayout>
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:paddingTop="6dp"
-                    android:layout_weight="0.415">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:paddingLeft="6dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="BVM"
-                        android:id="@+id/call_station"
-                        android:layout_gravity="center_horizontal"
-                        android:textStyle="bold|italic"
-                        android:paddingRight="5dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="17911 NW Evergreen Pkwy"
+                            android:id="@+id/call_address" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:id="@+id/call_unitlist"
+                            android:text="E05, E62, MW80, MED62" />
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
