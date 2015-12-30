@@ -43,27 +43,36 @@ public class IncidentManager {
         return false;
     }
 
-    public boolean doesIncidentExistByCallNumber(int callNumber) {
+    public boolean doesIncidentExistByCallNumber(int callNumber, char county) {
         for (int i = 0; i < List.size(); i++) {
-            if (List.get(i).getCallInfo().getCallNumber() == callNumber) {
+            if (
+                    List.get(i).getCallInfo().getCallNumber() == callNumber &&
+                    List.get(i).getCallInfo().getCounty() == county
+                ) {
                 return true;
             }
         }
         return false;
     }
 
-    public Incident getCallByCallNumber(int callNumber) {
+    public Incident getCallByCallNumber(int callNumber, char county) {
         for (int i = 0; i < List.size(); i++) {
-            if (List.get(i).getCallInfo().getCallNumber() == callNumber) {
+            if (
+                    List.get(i).getCallInfo().getCallNumber() == callNumber &&
+                    List.get(i).getCallInfo().getCounty() == county
+                ) {
                 return List.get(i);
             }
         }
         return null;
     }
 
-    public boolean removeCallByCallNumber(int callNumber) {
+    public boolean removeCallByCallNumber(int callNumber, char county) {
         for (int i = 0; i < List.size(); i++) {
-            if (List.get(i).getCallInfo().getCallNumber() == callNumber) {
+            if (
+                    List.get(i).getCallInfo().getCallNumber() == callNumber &&
+                    List.get(i).getCallInfo().getCounty() == county
+                ) {
                 List.remove(i);
                 return true;
             }

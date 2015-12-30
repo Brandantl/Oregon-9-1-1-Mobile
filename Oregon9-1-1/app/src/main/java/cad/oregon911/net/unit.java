@@ -5,6 +5,10 @@ package cad.oregon911.net;
  */
 public class unit {
 
+    public unit() {
+
+    }
+
     public unit(int id, String name, String agency, String station, String[] status) {
         this.id = id;
         this.name = name;

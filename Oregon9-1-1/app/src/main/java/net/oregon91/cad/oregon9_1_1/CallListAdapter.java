@@ -18,6 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cad.oregon911.net.Incident;
+import cad.oregon911.net.unit;
 import cad.oregon911.net.utils;
 
 
@@ -40,7 +41,17 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         String single_station = getItem(position).getCallInfo().getStation();
         String single_timedate = getItem(position).getCallInfo().getTs().ToString();
         String single_address = getItem(position).getCallInfo().getAddress();
-        String single_units = "<font color=\"" + utils.unitColor[utils.unitStatus.DISPATCHED.ordinal()] + "\">" + getItem(position).getCallInfo().getUnits() + "</font>";
+
+        String single_units = new String();
+
+        ArrayList<unit> unitList = getItem(position).getUnitList();
+        for (int i = 0; i < unitList.size(); i++) {
+            unit thing = unitList.get(i);
+            single_units += "<font color=\"" + utils.unitColor[utils.getUnitStatus(thing).ordinal()] + "\">" + thing.getName() + "</font>, ";
+        }
+
+        // Removes the last ,
+        single_units = single_units.substring(0, single_units.length()-2);
 
         // Get Textview
         TextView text_callSum = (TextView) customView.findViewById(R.id.call_text);
@@ -51,7 +62,7 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
 
         LinearLayout  call_banner = (LinearLayout) customView.findViewById(R.id.call_banner);
 
-        if (single_county == 'P') {
+        if (single_type == 'P') {
             call_banner.setBackgroundColor(Color.parseColor(utils.callHeaderColor[utils.agency.WCCCA_POLICE.ordinal()]));
         } else if (single_county == 'W') {
             call_banner.setBackgroundColor(Color.parseColor(utils.callHeaderColor[utils.agency.WCCCA.ordinal()]));

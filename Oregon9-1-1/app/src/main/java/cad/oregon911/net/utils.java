@@ -28,13 +28,61 @@ public class utils {
         return response;
     }
 
-    public ArrayList<Incident> ReadJSONCallList(JSONObject CALLS_LIST, char county) {
+    public static unitStatus getUnitStatus(unit thing) {
+        String status[] = thing.getStatus();
+
+        int clearidx = utils.unitStatus.CLEAR.ordinal();
+
+        if (!status[utils.unitStatus.CLEAR.ordinal()].equals("00:00:00")) {
+            return unitStatus.CLEAR;
+        } else if (!status[utils.unitStatus.ONSCENE.ordinal()].equals("00:00:00")) {
+            return unitStatus.ONSCENE;
+        } else if (!status[utils.unitStatus.ENROUTE.ordinal()].equals("00:00:00")) {
+            return unitStatus.ENROUTE;
+        } else if (!status[unitStatus.DISPATCHED.ordinal()].equals("00:00:00")) {
+            return unitStatus.CLEAR;
+        }
+        return unitStatus.CLEAR; // This should never happen.
+    }
+
+    public static ArrayList<unit> ReadJSONUnitList(JSONObject UNIT_LIST) {
+        ArrayList<unit> List = new ArrayList<>();
+        Iterator<?> keys = UNIT_LIST.keys();
+        while (keys.hasNext()) {
+            String key = (String) keys.next();
+            try {
+                if (UNIT_LIST.get(key) instanceof JSONObject) {
+                    JSONObject jobjunit = UNIT_LIST.getJSONObject(key);
+                    unit u = new unit();
+                    String[] status = new String[4];
+
+                    u.setName(key);
+                    u.setAgency(jobjunit.getString("agency"));
+                    u.setStation(jobjunit.getString("station"));
+
+                    status[utils.unitStatus.DISPATCHED.ordinal()] = jobjunit.getString("dispatched");
+                    status[utils.unitStatus.ENROUTE.ordinal()] = jobjunit.getString("enroute");
+                    status[utils.unitStatus.ONSCENE.ordinal()] = jobjunit.getString("onscene");
+                    status[utils.unitStatus.CLEAR.ordinal()] = jobjunit.getString("clear");
+
+                    u.setStatus(status);
+
+                    List.add(u);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return List;
+    }
+
+    public static ArrayList<Incident> ReadJSONCallList(JSONObject CALLS_LIST, char county) {
         ArrayList<Incident> List = new ArrayList<>();
         Iterator<?> keys = CALLS_LIST.keys();
-        while( keys.hasNext() ) {
-            String key = (String)keys.next();
+        while (keys.hasNext()) {
+            String key = (String) keys.next();
             try {
-                if ( CALLS_LIST.get(key) instanceof JSONObject ) {
+                if (CALLS_LIST.get(key) instanceof JSONObject) {
                     JSONObject call = CALLS_LIST.getJSONObject(key);
                     Incident thing = new Incident();
                     callinfo ci = new callinfo();
@@ -101,5 +149,5 @@ public class utils {
     }
 
     public static String[] unitColor = {"#C82620", "#FFCC33", "#00CC00", "#787878"};
-    public static String[] callHeaderColor = {"#c10c0c", "#C82620", "#69c773" };
+    public static String[] callHeaderColor = {"#c10c0c", "#0066ff", "#69c773"};
 }
