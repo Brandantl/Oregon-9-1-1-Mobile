@@ -11,7 +11,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:weightSum="1"
         android:layout_weight="1">
@@ -20,7 +20,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:weightSum="1">
 
             <LinearLayout
@@ -110,7 +110,8 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:id="@+id/call_unitlist"
-                            android:text="E05, E62, MW80, MED62" />
+                            android:text="E05, E62, MW80, MED62"
+                            android:paddingBottom="5dp" />
                     </LinearLayout>
                 </LinearLayout>
 

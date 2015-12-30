@@ -5,9 +5,4 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorCalllistBackground">#193139</color>
     <color name="WCCCACallHeader">#c10c0c</color>
-
-    <color name="dispatched">#C82620</color>
-    <color name="enroute">#FFCC33</color>
-    <color name="onscene">#00CC00</color>
-    <color name="cleared">#787878</color>
 </resources>

@@ -5,6 +5,7 @@ package net.oregon91.cad.oregon9_1_1;
  */
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,8 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         // Get Data from class
         int    single_callNumber = getItem(position).getCallInfo().getCallNumber();
         String single_callSum = getItem(position).getCallInfo().getCallSum();
+        char single_county = getItem(position).getCallInfo().getCounty();
+        char single_type = getItem(position).getCallInfo().getType();
         String single_station = getItem(position).getCallInfo().getStation();
         String single_timedate = getItem(position).getCallInfo().getTs().ToString();
         String single_address = getItem(position).getCallInfo().getAddress();
@@ -47,6 +50,14 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         TextView text_unitlist = (TextView) customView.findViewById(R.id.call_unitlist);
 
         LinearLayout  call_banner = (LinearLayout) customView.findViewById(R.id.call_banner);
+
+        if (single_county == 'P') {
+            call_banner.setBackgroundColor(Color.parseColor(utils.callHeaderColor[utils.agency.WCCCA_POLICE.ordinal()]));
+        } else if (single_county == 'W') {
+            call_banner.setBackgroundColor(Color.parseColor(utils.callHeaderColor[utils.agency.WCCCA.ordinal()]));
+        } else if (single_county == 'C') {
+            call_banner.setBackgroundColor(Color.parseColor(utils.callHeaderColor[utils.agency.CCOM.ordinal()]));
+        }
 
         text_callSum.setText(single_callSum);
         text_address.setText(single_address);

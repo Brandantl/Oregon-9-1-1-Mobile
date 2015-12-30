@@ -94,6 +94,12 @@ public class utils {
         CLEAR
     }
 
-    public static String[] unitColor = {"#C82620", "#FFCC33", "#00CC00", "#787878"};
+    public static enum agency {
+        WCCCA,
+        WCCCA_POLICE,
+        CCOM
+    }
 
+    public static String[] unitColor = {"#C82620", "#FFCC33", "#00CC00", "#787878"};
+    public static String[] callHeaderColor = {"#c10c0c", "#C82620", "#69c773" };
 }

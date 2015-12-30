@@ -59,7 +59,7 @@ public class Oregon911 {
 
                 // Process Clackamas County
                 if (callheader.has("C")) {
-                    ArrayList<Incident> CC_CALLS = utils.ReadJSONCallList(reader.getJSONObject("C"), 'C');
+                    ArrayList<Incident> CC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("C"), 'C');
 
                     // **** TEMP!!!! ****
                     for (int i = 0; i < CC_CALLS.size(); i++) {
