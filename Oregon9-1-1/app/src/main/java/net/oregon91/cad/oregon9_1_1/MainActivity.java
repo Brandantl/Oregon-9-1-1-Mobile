@@ -25,19 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         OR911.setContext(this);
-
-        createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
-        createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
-        createTestCall(151204893, "Detector Problem", "Singletree St & Doubletree St", new timestamp(2015, 11, 28, 18, 1, 30), "FGF");
-        createTestCall(151204893, "Sick Person/Unko", "18th Av & 19th Av", new timestamp(2015, 12, 25, 18, 1, 30), "FGF");
-        createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
-        createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
-        createTestCall(151204893, "Detector Problem", "Singletree St & Doubletree St", new timestamp(2015,11,28,18,1,30), "FGF" );
-        createTestCall(151204893, "Sick Person/Unko", "18th Av & 19th Av", new timestamp(2015,12,25,18,1,30), "FGF" );
-        createTestCall(151204891, "CARDIAC ARREST", "66535 SW KINNAMAN RD", new timestamp(2015, 12, 28, 18, 1, 30), "ALO");
-        createTestCall(151204892, "*** TEST ***", "17911 NW Evergreen Pkwy", new timestamp(2015,10,28,18,1,30), "RCK" );
-        createTestCall(151204893, "Detector Problem", "Singletree St & Doubletree St", new timestamp(2015,11,28,18,1,30), "FGF" );
-        createTestCall(151204893, "Sick Person/Unko", "18th Av & 19th Av", new timestamp(2015,12,25,18,1,30), "FGF" );
+        OR911.updateIncidentManager();
 
         ListAdapter CallListAdapt = new CallListAdapter(this,OR911.getIntMan().getList() );
         ListView CLV = (ListView) findViewById(R.id.CallListView);
