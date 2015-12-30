@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class IncidentManager {
 
+    private ArrayList<Incident> List;
+
     public IncidentManager() {
         List = new ArrayList<>();
     }
@@ -31,7 +33,7 @@ public class IncidentManager {
         List.remove(index);
     }
 
-    public Incident getCallByIndex(int index){
+    public Incident getCallByIndex(int index) {
         return List.get(index);
     }
 
@@ -47,8 +49,8 @@ public class IncidentManager {
         for (int i = 0; i < List.size(); i++) {
             if (
                     List.get(i).getCallInfo().getCallNumber() == callNumber &&
-                    List.get(i).getCallInfo().getCounty() == county
-                ) {
+                            List.get(i).getCallInfo().getCounty() == county
+                    ) {
                 return true;
             }
         }
@@ -59,8 +61,8 @@ public class IncidentManager {
         for (int i = 0; i < List.size(); i++) {
             if (
                     List.get(i).getCallInfo().getCallNumber() == callNumber &&
-                    List.get(i).getCallInfo().getCounty() == county
-                ) {
+                            List.get(i).getCallInfo().getCounty() == county
+                    ) {
                 return List.get(i);
             }
         }
@@ -71,14 +73,12 @@ public class IncidentManager {
         for (int i = 0; i < List.size(); i++) {
             if (
                     List.get(i).getCallInfo().getCallNumber() == callNumber &&
-                    List.get(i).getCallInfo().getCounty() == county
-                ) {
+                            List.get(i).getCallInfo().getCounty() == county
+                    ) {
                 List.remove(i);
                 return true;
             }
         }
         return false;
     }
-
-    private ArrayList<Incident> List;
 }

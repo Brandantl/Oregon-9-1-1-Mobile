@@ -5,6 +5,21 @@ package cad.oregon911.net;
  */
 public class callinfo {
 
+    private char type;
+    private int id;
+    private String callSum;
+    private int callNumber;
+    private String address;
+    private String agency;
+    private String station;
+    private String units;
+    private String flags;
+    private boolean active;
+    private double lat;
+    private double lon;
+    private char county;
+    private timestamp ts;
+
     public callinfo() {
         this.id = 0;
         this.callNumber = 0;
@@ -14,7 +29,7 @@ public class callinfo {
         ts = new timestamp();
     }
 
-    public callinfo(int id, String callSum, int callNumber, String address, String agency, String station, String units, String flags, boolean active, double lat, double lon,char county, char type, timestamp ts) {
+    public callinfo(int id, String callSum, int callNumber, String address, String agency, String station, String units, String flags, boolean active, double lat, double lon, char county, char type, timestamp ts) {
         this.id = id;
         this.callSum = callSum;
         this.callNumber = callNumber;
@@ -135,8 +150,6 @@ public class callinfo {
         this.county = county;
     }
 
-    private char   type;
-
     public char getType() {
         return type;
     }
@@ -144,18 +157,4 @@ public class callinfo {
     public void setType(char type) {
         this.type = type;
     }
-
-    private int id;
-    private String callSum;
-    private int callNumber;
-    private String address;
-    private String agency;
-    private String station;
-    private String units;
-    private String flags;
-    private boolean active;
-    private double lat;
-    private double lon;
-    private char county;
-    private timestamp ts;
 }

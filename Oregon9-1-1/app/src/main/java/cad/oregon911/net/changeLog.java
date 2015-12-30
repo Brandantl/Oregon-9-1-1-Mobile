@@ -5,6 +5,14 @@ package cad.oregon911.net;
  */
 public class changeLog {
 
+    private int id;
+    private timestamp ts;
+    private int type;
+    private double lat;
+    private double lon;
+    private String callSum;
+    private String address;
+
     public changeLog() {
         this.id = 0;
         this.type = 0;
@@ -78,12 +86,4 @@ public class changeLog {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    private int id;
-    private timestamp ts;
-    private int type;
-    private double lat;
-    private double lon;
-    private String callSum;
-    private String address;
 }

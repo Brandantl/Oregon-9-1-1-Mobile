@@ -5,12 +5,18 @@ package cad.oregon911.net;
  */
 public class callLogEntry {
 
+    private int id;
+    private int userid;
+    private String username;
+    private timestamp ts;
+    private String message;
+
     public callLogEntry() {
         this.id = 0;
         ts = new timestamp();
     }
 
-    public callLogEntry(int id, timestamp ts,int userid, String username, String message) {
+    public callLogEntry(int id, timestamp ts, int userid, String username, String message) {
         this.id = id;
         this.ts = ts;
         this.userid = userid;
@@ -57,10 +63,4 @@ public class callLogEntry {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    private int id;
-    private int userid;
-    private String username;
-    private timestamp ts;
-    private String message;
 }

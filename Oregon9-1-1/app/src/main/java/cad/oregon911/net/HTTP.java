@@ -1,8 +1,8 @@
 package cad.oregon911.net;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,8 +19,7 @@ import java.util.logging.Logger;
 public class HTTP extends AsyncTask<String, String, String> {
     private Context context;
 
-    public HTTP(Context context)
-    {
+    public HTTP(Context context) {
         this.context = context;
     }
 
@@ -55,7 +54,7 @@ public class HTTP extends AsyncTask<String, String, String> {
                     StringBuilder sb = new StringBuilder();
                     String line;
                     while ((line = br.readLine()) != null) {
-                        sb.append(line+"\n");
+                        sb.append(line + "\n");
                     }
                     br.close();
                     return sb.toString();

@@ -5,6 +5,13 @@ package cad.oregon911.net;
  */
 public class timestamp {
 
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
+    private int second;
+
     public timestamp() {
         this.year = 0;
         this.month = 0;
@@ -73,15 +80,7 @@ public class timestamp {
 
     public String ToString() {
         String ret = year + "-" + month + "-" + day + " ";
-        ret +=       hour + ":" + minute + ":"+ second;
+        ret += hour + ":" + minute + ":" + second;
         return ret;
     }
-
-    private int year;
-    private int month;
-    private int day;
-
-    private int hour;
-    private int minute;
-    private int second;
 }

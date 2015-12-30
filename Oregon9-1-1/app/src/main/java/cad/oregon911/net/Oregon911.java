@@ -15,6 +15,11 @@ import java.util.Iterator;
  */
 public class Oregon911 {
 
+    private IncidentManager IntMan;
+    private Context context;
+    private utils utils;
+    private String APIUrl = "http://www.api.oregon911.net/api/1.0/?method=getAndroidData&key=android&type=JSON";
+
     public Oregon911() {
         IntMan = new IncidentManager();
         utils = new utils();
@@ -125,9 +130,4 @@ public class Oregon911 {
     public void setIntMan(IncidentManager intMan) {
         IntMan = intMan;
     }
-
-    private IncidentManager IntMan;
-    private Context context;
-    private utils utils;
-    private String APIUrl = "http://www.api.oregon911.net/api/1.0/?method=getAndroidData&key=android&type=JSON";
 }

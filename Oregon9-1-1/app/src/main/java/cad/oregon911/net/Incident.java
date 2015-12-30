@@ -7,11 +7,16 @@ import java.util.ArrayList;
  */
 public class Incident {
 
+    private callinfo CallInfo;
+    private ArrayList<callLogEntry> callLogEntryList;
+    private ArrayList<unit> UnitList;
+    private ArrayList<changeLog> changeLogList;
+
     public Incident() {
         CallInfo = new callinfo();
         callLogEntryList = new ArrayList<>();
         UnitList = new ArrayList<>();
-        changeLogList  = new ArrayList<>();
+        changeLogList = new ArrayList<>();
     }
 
     public Incident(callinfo callInfo, ArrayList<callLogEntry> callLogEntryList, ArrayList<unit> unitList, ArrayList<changeLog> changeLogList) {
@@ -80,9 +85,4 @@ public class Incident {
     public int getMyID() {
         return CallInfo.getId();
     }
-
-    private callinfo CallInfo;
-    private ArrayList<callLogEntry> callLogEntryList;
-    private ArrayList<unit> UnitList;
-    private ArrayList<changeLog> changeLogList;
 }

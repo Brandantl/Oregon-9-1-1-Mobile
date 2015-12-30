@@ -51,7 +51,8 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         }
 
         // Removes the last ,
-        single_units = single_units.substring(0, single_units.length()-2);
+        if (single_units.length() > 2)
+            single_units = single_units.substring(0, single_units.length()-2);
 
         // Get Textview
         TextView text_callSum = (TextView) customView.findViewById(R.id.call_text);

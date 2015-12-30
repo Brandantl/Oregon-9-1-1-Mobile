@@ -5,6 +5,12 @@ package cad.oregon911.net;
  */
 public class unit {
 
+    private int id;
+    private String name;
+    private String agency;
+    private String station;
+    private String[] status;
+
     public unit() {
 
     }
@@ -56,10 +62,4 @@ public class unit {
     public void setStatus(String[] status) {
         this.status = status;
     }
-
-    private int id;
-    private String name;
-    private String agency;
-    private String station;
-    private String[] status;
 }
