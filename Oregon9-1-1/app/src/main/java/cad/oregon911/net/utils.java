@@ -40,7 +40,7 @@ public class utils {
         } else if (!status[utils.unitStatus.ENROUTE.ordinal()].equals("00:00:00")) {
             return unitStatus.ENROUTE;
         } else if (!status[unitStatus.DISPATCHED.ordinal()].equals("00:00:00")) {
-            return unitStatus.CLEAR;
+            return unitStatus.DISPATCHED;
         }
         return unitStatus.CLEAR; // This should never happen.
     }
