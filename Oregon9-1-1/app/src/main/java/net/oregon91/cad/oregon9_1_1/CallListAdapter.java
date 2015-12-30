@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cad.oregon911.net.Incident;
+import cad.oregon911.net.utils;
 
 
 public class CallListAdapter extends ArrayAdapter<Incident> {
@@ -36,7 +37,7 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         String single_station = getItem(position).getCallInfo().getStation();
         String single_timedate = getItem(position).getCallInfo().getTs().ToString();
         String single_address = getItem(position).getCallInfo().getAddress();
-        String single_units = "<font color=\"" + R.color.enroute + "\">" + "MW80" + "</font>";
+        String single_units = "<font color=\"" + utils.unitColor[utils.unitStatus.DISPATCHED.ordinal()] + "\">" + "MW80" + "</font>";
 
         // Get Textview
         TextView text_callSum = (TextView) customView.findViewById(R.id.call_text);
