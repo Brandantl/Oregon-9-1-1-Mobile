@@ -11,12 +11,22 @@ public class Incident {
     private ArrayList<callLogEntry> callLogEntryList;
     private ArrayList<unit> UnitList;
     private ArrayList<changeLog> changeLogList;
+    private int updateNum; // This tells us if some calls wasn't updated (ie deleted)
+
+    public int getUpdateNum() {
+        return updateNum;
+    }
+
+    public void setUpdateNum(int updateNum) {
+        this.updateNum = updateNum;
+    }
 
     public Incident() {
         CallInfo = new callinfo();
         callLogEntryList = new ArrayList<>();
         UnitList = new ArrayList<>();
         changeLogList = new ArrayList<>();
+        updateNum = 0;
     }
 
     public Incident(callinfo callInfo, ArrayList<callLogEntry> callLogEntryList, ArrayList<unit> unitList, ArrayList<changeLog> changeLogList) {

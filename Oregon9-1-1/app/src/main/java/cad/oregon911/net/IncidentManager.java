@@ -8,9 +8,19 @@ import java.util.ArrayList;
 public class IncidentManager {
 
     private ArrayList<Incident> List;
+    private int updateNum;
+
+    public int getUpdateNum() {
+        return updateNum;
+    }
+
+    public void setUpdateNum(int updateNum) {
+        this.updateNum = updateNum;
+    }
 
     public IncidentManager() {
         List = new ArrayList<>();
+        updateNum = 0;
     }
 
     public IncidentManager(ArrayList<Incident> list) {
@@ -107,6 +117,20 @@ public class IncidentManager {
                     List.get(i).getCallInfo().getCallNumber() == callNumber &&
                             List.get(i).getCallInfo().getCounty() == county
                     ) {
+                List.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeCall(Incident thing) {
+        for (int i = 0; i < List.size(); i++) {
+            if (
+                List.get(i).getCallInfo().getCallNumber() == thing.getCallInfo().getCallNumber() &&
+                List.get(i).getCallInfo().getCounty() == thing.getCallInfo().getCounty() &&
+                List.get(i).getCallInfo().getType() == thing.getCallInfo().getType()
+            ) {
                 List.remove(i);
                 return true;
             }

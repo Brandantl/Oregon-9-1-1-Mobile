@@ -1,13 +1,10 @@
 package net.oregon91.cad.oregon9_1_1;
-
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+
 import cad.oregon911.net.Incident;
 import cad.oregon911.net.Oregon911;
 import cad.oregon911.net.callinfo;
@@ -16,8 +13,9 @@ import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
     Oregon911 OR911;
-    CallListAdapter CallListAdapt;
-    ListView calllist;
+    private CallListAdapter CallListAdapt;
+    private ListView calllist;
+
     public MainActivity() {
         OR911 = new Oregon911();
     }
@@ -27,9 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         OR911.setContext(this);
-        OR911.updateIncidentManager();
         calllist = (ListView) findViewById(R.id.CallListView);
-        calllist.setAdapter(new CallListAdapter(OR911.getContext(), OR911.getIntMan().getList()));
+        refreshButton(null);
     }
 
     @Override
@@ -40,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void refreshButton(MenuItem menuItem) {
-        OR911.updateIncidentManager();
-        calllist.setAdapter(null);
-        calllist.setAdapter(new CallListAdapter(OR911.getContext(), OR911.getIntMan().getList()));
+        RefreshCallList thing = new RefreshCallList(OR911, calllist);
+        thing.execute();
     }
 
     private void createTestCall(int callNumber, String callSum, String address, timestamp ts, String station) {

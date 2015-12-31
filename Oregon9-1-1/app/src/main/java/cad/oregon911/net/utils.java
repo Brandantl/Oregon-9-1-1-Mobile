@@ -15,19 +15,6 @@ import java.util.concurrent.ExecutionException;
 
 public class utils {
 
-    public String http_get(String url, Context context) {
-        HTTP thing = new HTTP(context);
-        String response = "";
-        try {
-            response = thing.execute(url).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
     public static unitStatus getUnitStatus(unit thing) {
         String status[] = thing.getStatus();
 

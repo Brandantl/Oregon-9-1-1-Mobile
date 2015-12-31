@@ -1,7 +1,6 @@
 package cad.oregon911.net;
 
 import android.content.Context;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +41,7 @@ public class Oregon911 {
     }
 
     public void updateIncidentManager() {
-        String JSONHTTP = utils.http_get(APIUrl, context);
+        String JSONHTTP = HTTP.get(APIUrl, 10000);
 
         if (JSONHTTP != null && !JSONHTTP.isEmpty() && JSONHTTP != "null") {
             JSONObject reader;
@@ -56,6 +55,7 @@ public class Oregon911 {
                 if (reader.has("units"))
                     process_units(reader.getJSONObject("units"));
 
+                clean_intman();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -63,13 +63,33 @@ public class Oregon911 {
         }
     }
 
+    private void clean_intman() {
+        int updateNum = IntMan.getUpdateNum();
+        ArrayList<Incident> IncidentsToRemoveFromIntMan = new ArrayList<>();
+        ArrayList<Incident> List = IntMan.getList();
+        for (int i = 0; i < List.size(); i++) {
+            if (List.get(i).getUpdateNum() != updateNum) {
+                IncidentsToRemoveFromIntMan.add(List.get(i));
+            }
+        }
+        for (int i = 0; i < IncidentsToRemoveFromIntMan.size(); i++) {
+            IntMan.removeCall(IncidentsToRemoveFromIntMan.get(i));
+        }
+    }
+
     private void process_callHeader(JSONObject callheader) {
         try {
+            int updateNum = IntMan.getUpdateNum();
+
+            updateNum = (updateNum + 1) % 4;
+            IntMan.setUpdateNum(updateNum);
+
             // Process Washington County
             if (callheader.has("W")) {
                 ArrayList<Incident> WC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("W"), 'W');
                 for (int i = 0; i < WC_CALLS.size(); i++) {
                     Incident call  = WC_CALLS.get(i);
+                    call.setUpdateNum(updateNum);
                     IntMan.updateIncident(call);
                 }
             }
@@ -79,6 +99,7 @@ public class Oregon911 {
                 ArrayList<Incident> CC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("C"), 'C');
                 for (int i = 0; i < CC_CALLS.size(); i++) {
                     Incident call  = CC_CALLS.get(i);
+                    call.setUpdateNum(updateNum);
                     IntMan.updateIncident(call);
                 }
             }
