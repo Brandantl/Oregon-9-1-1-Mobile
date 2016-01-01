@@ -13,8 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import cad.oregon911.net.Incident;
 import cad.oregon911.net.Oregon911;
-import cad.oregon911.net.callinfo;
-import cad.oregon911.net.timestamp;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +21,9 @@ import java.util.Locale;
 
 public class calllist_page extends AppCompatActivity {
     Oregon911 OR911;
-    private CallListAdapter CallListAdapt;
+    private net.oregon91.cad.oregon9_1_1.CallListAdapter CallListAdapt;
     private ListView calllist;
-
+    private Thread autoRefresh;
     public calllist_page() {
         OR911 = new Oregon911();
     }
@@ -45,13 +43,42 @@ public class calllist_page extends AppCompatActivity {
             }
         });
         registerForContextMenu(calllist);
-        refreshButton(null);
+        autoRefresh();
+    }
+
+    void autoRefresh() {
+        autoRefresh = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(10000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                refreshButton(null);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        autoRefresh.start();
     }
 
     @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
         refreshButton(null);
+        if (!autoRefresh.isAlive())
+            autoRefresh();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+        autoRefresh.interrupt(); // Stop AutoRefresh
     }
 
     @Override
@@ -101,7 +128,7 @@ public class calllist_page extends AppCompatActivity {
     }
 
     public void refreshButton(MenuItem menuItem) {
-        RefreshCallList thing = new RefreshCallList(OR911, calllist);
+        net.oregon91.cad.oregon9_1_1.RefreshCallList thing = new net.oregon91.cad.oregon9_1_1.RefreshCallList(OR911, calllist);
         thing.execute();
     }
 
