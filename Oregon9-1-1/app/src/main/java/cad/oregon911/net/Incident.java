@@ -1,6 +1,7 @@
 package cad.oregon911.net;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Created by Brandan on 12/28/2015.
@@ -104,5 +105,38 @@ public class Incident {
 
     public int getMyID() {
         return CallInfo.getId();
+    }
+}
+class IncidentDateComparatorDesc implements Comparator<Incident> {
+    public int compare(Incident incident1, Incident incident2) {
+        Boolean incident1IsNewer = false;
+        timestamp int1ts = incident1.getCallInfo().getTs();
+        timestamp int2ts = incident2.getCallInfo().getTs();
+
+        // This can be optimised but I don't care.
+        if (int1ts.getYear() > int2ts.getYear()) {
+            incident1IsNewer = true;
+        } else {
+            if (int1ts.getMonth() > int2ts.getMonth()) {
+                incident1IsNewer = true;
+            } else {
+                if (int1ts.getDay() > int2ts.getDay()) {
+                    incident1IsNewer = true;
+                } else {
+                    if (int1ts.getHour() > int2ts.getHour()) {
+                        incident1IsNewer = true;
+                    } else {
+                        if (int1ts.getMinute() > int2ts.getMinute()) {
+                            incident1IsNewer = true;
+                        } else {
+                            if (int1ts.getMinute() > int2ts.getMinute()) {
+                                incident1IsNewer = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return incident1IsNewer ? -1 : 0;
     }
 }

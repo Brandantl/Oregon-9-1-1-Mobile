@@ -1,6 +1,7 @@
 package cad.oregon911.net;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Brandan on 12/28/2015.
@@ -152,4 +153,9 @@ public class IncidentManager {
     public void clearIncidents() {
         List.clear();
     }
+
+    public void sortByDateDesc() {
+        Collections.sort(List, new IncidentDateComparatorDesc());
+    }
+
 }
