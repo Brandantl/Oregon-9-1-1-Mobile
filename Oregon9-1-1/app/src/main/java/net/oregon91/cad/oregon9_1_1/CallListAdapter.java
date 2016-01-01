@@ -60,6 +60,12 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         TextView text_timedate = (TextView) customView.findViewById(R.id.call_timedate);
         TextView text_unitlist = (TextView) customView.findViewById(R.id.call_unitlist);
 
+        // Hidden identifers
+        TextView hidden_callNumber = (TextView) customView.findViewById(R.id.call_unitlist);
+        TextView hidden_county = (TextView) customView.findViewById(R.id.call_unitlist);
+        TextView hidden_type = (TextView) customView.findViewById(R.id.call_unitlist);
+
+
         LinearLayout  call_banner = (LinearLayout) customView.findViewById(R.id.call_banner);
 
         if (single_type == 'P') {
@@ -75,6 +81,13 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         text_station.setText(single_station);
         text_timedate.setText(single_timedate);
         text_unitlist.setText(Html.fromHtml(single_units));
+
+        // Hidden set.
+        hidden_callNumber.setText(single_callNumber);
+        hidden_county.setText(single_county);
+        hidden_type.setText(single_type);
+
+        // Hidden is to identify help IntMan find the call. This does not show up on the UI.
 
         return customView;
     }
