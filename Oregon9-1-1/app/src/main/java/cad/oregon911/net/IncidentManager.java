@@ -137,4 +137,8 @@ public class IncidentManager {
         }
         return false;
     }
+
+    public void clearIncidents() {
+        List.clear();
+    }
 }

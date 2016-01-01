@@ -43,22 +43,27 @@ public class Oregon911 {
     public void updateIncidentManager() {
         String JSONHTTP = HTTP.get(APIUrl, 10000);
 
-        if (JSONHTTP != null && !JSONHTTP.isEmpty() && JSONHTTP != "null") {
-            JSONObject reader;
-            try {
-                reader = new JSONObject(JSONHTTP);
-                Incident thing;
+        if (JSONHTTP != null && !JSONHTTP.isEmpty()) {
+            if (JSONHTTP != "null") {
+                JSONObject reader;
+                try {
+                    reader = new JSONObject(JSONHTTP);
+                    Incident thing;
 
-                process_callHeader(reader.getJSONObject("callheader"));
+                    process_callHeader(reader.getJSONObject("callheader"));
 
-                // Make sure there's even units!
-                if (reader.has("units"))
-                    process_units(reader.getJSONObject("units"));
+                    // Make sure there's even units!
+                    if (reader.has("units"))
+                        process_units(reader.getJSONObject("units"));
 
-                clean_intman();
+                    clean_intman();
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // Theres no calls.
+                IntMan.clearIncidents();
             }
         }
     }
