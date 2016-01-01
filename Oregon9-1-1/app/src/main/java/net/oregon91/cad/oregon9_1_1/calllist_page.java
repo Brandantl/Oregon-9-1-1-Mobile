@@ -15,12 +15,12 @@ import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class calllist_page extends AppCompatActivity {
     Oregon911 OR911;
     private CallListAdapter CallListAdapt;
     private ListView calllist;
 
-    public MainActivity() {
+    public calllist_page() {
         OR911 = new Oregon911();
     }
 
@@ -36,13 +36,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 parent.findViewById(R.id.call_text);
                 TextView calltxt = (TextView)parent.findViewById(R.id.call_text);
-                Toast.makeText(MainActivity.this, calltxt.getText(), Toast.LENGTH_LONG).show();
+                Toast.makeText(calllist_page.this, calltxt.getText(), Toast.LENGTH_LONG).show();
             }
         });
 
         refreshButton(null);
-
-
     }
 
     @Override

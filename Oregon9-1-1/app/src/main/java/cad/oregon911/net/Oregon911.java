@@ -57,7 +57,6 @@ public class Oregon911 {
                         process_units(reader.getJSONObject("units"));
 
                     clean_intman();
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
