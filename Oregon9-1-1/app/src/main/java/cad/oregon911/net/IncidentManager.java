@@ -11,14 +11,6 @@ public class IncidentManager {
     private ArrayList<Incident> List;
     private int updateNum;
 
-    public int getUpdateNum() {
-        return updateNum;
-    }
-
-    public void setUpdateNum(int updateNum) {
-        this.updateNum = updateNum;
-    }
-
     public IncidentManager() {
         List = new ArrayList<>();
         updateNum = 0;
@@ -26,6 +18,14 @@ public class IncidentManager {
 
     public IncidentManager(ArrayList<Incident> list) {
         List = list;
+    }
+
+    public int getUpdateNum() {
+        return updateNum;
+    }
+
+    public void setUpdateNum(int updateNum) {
+        this.updateNum = updateNum;
     }
 
     public ArrayList<Incident> getList() {
@@ -58,8 +58,8 @@ public class IncidentManager {
 
     public void updateIncident(Incident thing) {
         for (int i = 0; i < List.size(); i++) {
-            if ( thing.getMyID() == List.get(i).getMyID()) {
-                List.set(i,thing);
+            if (thing.getMyID() == List.get(i).getMyID()) {
+                List.set(i, thing);
                 return;
             }
         }
@@ -118,7 +118,7 @@ public class IncidentManager {
 
     public void setIncidentByIndex(int index, Incident thing) {
         if ((List.size() < index) && (List.size() > -1)) {
-            List.set(index,thing);
+            List.set(index, thing);
         }
     }
 
@@ -139,10 +139,10 @@ public class IncidentManager {
     public boolean removeCall(Incident thing) {
         for (int i = 0; i < List.size(); i++) {
             if (
-                List.get(i).getCallInfo().getCallNumber() == thing.getCallInfo().getCallNumber() &&
-                List.get(i).getCallInfo().getCounty() == thing.getCallInfo().getCounty() &&
-                List.get(i).getCallInfo().getType() == thing.getCallInfo().getType()
-            ) {
+                    List.get(i).getCallInfo().getCallNumber() == thing.getCallInfo().getCallNumber() &&
+                            List.get(i).getCallInfo().getCounty() == thing.getCallInfo().getCounty() &&
+                            List.get(i).getCallInfo().getType() == thing.getCallInfo().getType()
+                    ) {
                 List.remove(i);
                 return true;
             }
@@ -154,8 +154,8 @@ public class IncidentManager {
         List.clear();
     }
 
-    public void sortByDateDesc() {
-        Collections.sort(List, new IncidentDateComparatorDesc());
+    public void sortByDate() {
+        Collections.sort(List, new IncidentDateComparator());
     }
 
 }

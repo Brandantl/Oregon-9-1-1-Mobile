@@ -1,7 +1,9 @@
 package cad.oregon911.net;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 
 /**
  * Created by Brandan on 12/28/2015.
@@ -13,14 +15,6 @@ public class Incident {
     private ArrayList<unit> UnitList;
     private ArrayList<changeLog> changeLogList;
     private int updateNum; // This tells us if some calls wasn't updated (ie deleted)
-
-    public int getUpdateNum() {
-        return updateNum;
-    }
-
-    public void setUpdateNum(int updateNum) {
-        this.updateNum = updateNum;
-    }
 
     public Incident() {
         CallInfo = new callinfo();
@@ -35,6 +29,14 @@ public class Incident {
         this.callLogEntryList = callLogEntryList;
         UnitList = unitList;
         this.changeLogList = changeLogList;
+    }
+
+    public int getUpdateNum() {
+        return updateNum;
+    }
+
+    public void setUpdateNum(int updateNum) {
+        this.updateNum = updateNum;
     }
 
     public ArrayList<changeLog> getChangeLogList() {
@@ -71,7 +73,7 @@ public class Incident {
 
     public void updateUnit(unit thing) {
         for (int i = 0; i < UnitList.size(); i++) {
-            if ( thing.getName().equals(UnitList.get(i).getName())) {
+            if (thing.getName().equals(UnitList.get(i).getName())) {
                 UnitList.get(i).setStatus(thing.getStatus());
                 return;
             }
@@ -107,36 +109,28 @@ public class Incident {
         return CallInfo.getId();
     }
 }
-class IncidentDateComparatorDesc implements Comparator<Incident> {
-    public int compare(Incident incident1, Incident incident2) {
-        Boolean incident1IsNewer = false;
-        timestamp int1ts = incident1.getCallInfo().getTs();
-        timestamp int2ts = incident2.getCallInfo().getTs();
 
-        // This can be optimised but I don't care.
-        if (int1ts.getYear() > int2ts.getYear()) {
-            incident1IsNewer = true;
+class IncidentDateComparator implements Comparator<Incident> {
+    public int compare(Incident incident1, Incident incident2) {
+        Date date1 = getDate(incident1.getCallInfo().getTs());
+        Date date2 = getDate(incident2.getCallInfo().getTs());
+        if (date1.before(date2)) {
+            return 1;
+        } else if (date1.after(date2)) {
+            return -1;
         } else {
-            if (int1ts.getMonth() > int2ts.getMonth()) {
-                incident1IsNewer = true;
-            } else {
-                if (int1ts.getDay() > int2ts.getDay()) {
-                    incident1IsNewer = true;
-                } else {
-                    if (int1ts.getHour() > int2ts.getHour()) {
-                        incident1IsNewer = true;
-                    } else {
-                        if (int1ts.getMinute() > int2ts.getMinute()) {
-                            incident1IsNewer = true;
-                        } else {
-                            if (int1ts.getMinute() > int2ts.getMinute()) {
-                                incident1IsNewer = true;
-                            }
-                        }
-                    }
-                }
-            }
+            return 0;
         }
-        return incident1IsNewer ? -1 : 0;
+    }
+
+    private Date getDate(timestamp ts) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, ts.getYear());
+        cal.set(Calendar.MONTH, ts.getMonth());
+        cal.set(Calendar.DAY_OF_MONTH, ts.getDay());
+        cal.set(Calendar.HOUR, ts.getHour());
+        cal.set(Calendar.MINUTE, ts.getMinute());
+        cal.set(Calendar.SECOND, ts.getSecond());
+        return cal.getTime();
     }
 }

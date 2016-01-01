@@ -3,27 +3,30 @@ package net.oregon91.cad.oregon9_1_1;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import cad.oregon911.net.Incident;
-import cad.oregon911.net.Oregon911;
-import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+
+import cad.oregon911.net.Incident;
+import cad.oregon911.net.Oregon911;
 
 public class calllist_page extends AppCompatActivity {
     Oregon911 OR911;
     private net.oregon91.cad.oregon9_1_1.CallListAdapter CallListAdapt;
     private ListView calllist;
     private Thread autoRefresh;
+    private int currentFirstVisibleItem, currentVisibleItemCount, currentTotalItemCount;
+
     public calllist_page() {
         OR911 = new Oregon911();
     }
@@ -92,9 +95,9 @@ public class calllist_page extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         View callitem = calllist.getAdapter().getView(info.position, null, calllist);
-        TextView string_callNumber = (TextView)callitem.findViewById(R.id.callNumber);
-        TextView string_county = (TextView)callitem.findViewById(R.id.county);
-        TextView string_type = (TextView)callitem.findViewById(R.id.type);
+        TextView string_callNumber = (TextView) callitem.findViewById(R.id.callNumber);
+        TextView string_county = (TextView) callitem.findViewById(R.id.county);
+        TextView string_type = (TextView) callitem.findViewById(R.id.type);
 
         // Conversion
         int callNumber = Integer.parseInt(string_callNumber.getText().toString());
@@ -107,13 +110,11 @@ public class calllist_page extends AppCompatActivity {
 
         if (call != null) {
             // Open Maps
-            String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", lat,lon, lat,lon);
+            String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", lat, lon, lat, lon);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-            try
-            {
+            try {
                 OR911.getContext().startActivity(intent);
-            }
-            catch(ActivityNotFoundException ex) {
+            } catch (ActivityNotFoundException ex) {
                 Toast.makeText(this, "Please install a maps application", Toast.LENGTH_LONG).show();
             }
         }

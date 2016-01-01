@@ -10,7 +10,7 @@ import java.net.URL;
 /**
  * Created by Brandan on 12/29/2015.
  */
-public class HTTP  {
+public class HTTP {
     public static String get(String url, int timeout) {
         HttpURLConnection c = null;
         try {
@@ -39,15 +39,15 @@ public class HTTP  {
             }
 
         } catch (MalformedURLException ex) {
-           // Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-           // Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (c != null) {
                 try {
                     c.disconnect();
                 } catch (Exception ex) {
-                  //  Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+                    //  Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

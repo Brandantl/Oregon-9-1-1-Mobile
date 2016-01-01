@@ -2,6 +2,7 @@ package cad.oregon911.net;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -10,6 +11,9 @@ import java.util.Iterator;
  */
 
 public class utils {
+
+    public static String[] unitColor = {"#C82620", "#FFCC33", "#00CC00", "#787878"};
+    public static String[] callHeaderColor = {"#c10c0c", "#0066ff", "#69c773"};
 
     public static unitStatus getUnitStatus(unit thing) {
         String status[] = thing.getStatus();
@@ -119,13 +123,9 @@ public class utils {
         ONSCENE,
         CLEAR
     }
-
     public static enum agency {
         WCCCA,
         WCCCA_POLICE,
         CCOM
     }
-
-    public static String[] unitColor = {"#C82620", "#FFCC33", "#00CC00", "#787878"};
-    public static String[] callHeaderColor = {"#c10c0c", "#0066ff", "#69c773"};
 }

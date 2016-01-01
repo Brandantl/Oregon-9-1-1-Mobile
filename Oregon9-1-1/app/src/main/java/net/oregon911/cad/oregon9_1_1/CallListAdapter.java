@@ -33,7 +33,7 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         View customView = inflater.inflate(R.layout.custom_call_list_row, parent, false);
 
         // Get Data from class
-        int    single_callNumber = getItem(position).getCallInfo().getCallNumber();
+        int single_callNumber = getItem(position).getCallInfo().getCallNumber();
         String single_callSum = getItem(position).getCallInfo().getCallSum();
         char single_county = getItem(position).getCallInfo().getCounty();
         char single_type = getItem(position).getCallInfo().getType();
@@ -51,7 +51,7 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
 
         // Removes the last ,
         if (single_units.length() > 2)
-            single_units = single_units.substring(0, single_units.length()-2);
+            single_units = single_units.substring(0, single_units.length() - 2);
 
         // Get Textview
         TextView text_callSum = (TextView) customView.findViewById(R.id.call_text);
@@ -66,7 +66,7 @@ public class CallListAdapter extends ArrayAdapter<Incident> {
         TextView hidden_type = (TextView) customView.findViewById(R.id.type);
 
 
-        LinearLayout  call_banner = (LinearLayout) customView.findViewById(R.id.call_banner);
+        LinearLayout call_banner = (LinearLayout) customView.findViewById(R.id.call_banner);
 
         if (single_type == 'P') {
             call_banner.setBackgroundColor(Color.parseColor(utils.callHeaderColor[utils.agency.WCCCA_POLICE.ordinal()]));

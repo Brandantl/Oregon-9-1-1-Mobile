@@ -1,14 +1,16 @@
 package cad.oregon911.net;
 
 import android.content.Context;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
  * Created by Brandan on 12/28/2015.
- *
+ * <p/>
  * THIS IS A DRIVER!
  */
 public class Oregon911 {
@@ -57,7 +59,7 @@ public class Oregon911 {
 
                     clean_intman();
 
-                    IntMan.sortByDateDesc();
+                    IntMan.sortByDate();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -93,7 +95,7 @@ public class Oregon911 {
             if (callheader.has("W")) {
                 ArrayList<Incident> WC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("W"), 'W');
                 for (int i = 0; i < WC_CALLS.size(); i++) {
-                    Incident call  = WC_CALLS.get(i);
+                    Incident call = WC_CALLS.get(i);
                     call.setUpdateNum(updateNum);
                     IntMan.updateIncident(call);
                 }
@@ -103,7 +105,7 @@ public class Oregon911 {
             if (callheader.has("C")) {
                 ArrayList<Incident> CC_CALLS = utils.ReadJSONCallList(callheader.getJSONObject("C"), 'C');
                 for (int i = 0; i < CC_CALLS.size(); i++) {
-                    Incident call  = CC_CALLS.get(i);
+                    Incident call = CC_CALLS.get(i);
                     call.setUpdateNum(updateNum);
                     IntMan.updateIncident(call);
                 }
