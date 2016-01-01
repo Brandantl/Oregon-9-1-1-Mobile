@@ -49,6 +49,12 @@ public class calllist_page extends AppCompatActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+        refreshButton(null);
+    }
+
+    @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater menuinflater = getMenuInflater();
