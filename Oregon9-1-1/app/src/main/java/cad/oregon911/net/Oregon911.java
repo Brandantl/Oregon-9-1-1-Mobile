@@ -3,13 +3,12 @@ package cad.oregon911.net;
 import android.content.Context;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
  * Created by Brandan on 12/28/2015.
- * <p/>
+ *
  * THIS IS A DRIVER!
  */
 public class Oregon911 {

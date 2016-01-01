@@ -1,7 +1,11 @@
 package net.oregon91.cad.oregon9_1_1;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +18,8 @@ import cad.oregon911.net.timestamp;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class calllist_page extends AppCompatActivity {
     Oregon911 OR911;
@@ -34,12 +40,51 @@ public class calllist_page extends AppCompatActivity {
         calllist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView calltxt = (TextView)view.findViewById(R.id.call_text);
-                Toast.makeText(calllist_page.this, calltxt.getText(), Toast.LENGTH_LONG).show();
+                //TextView calltxt = (TextView)view.findViewById(R.id.call_text);
+
             }
         });
-
+        registerForContextMenu(calllist);
         refreshButton(null);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater menuinflater = getMenuInflater();
+        menuinflater.inflate(R.menu.call_list_contextmenu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        View callitem = calllist.getAdapter().getView(info.position, null, calllist);
+        TextView string_callNumber = (TextView)callitem.findViewById(R.id.callNumber);
+        TextView string_county = (TextView)callitem.findViewById(R.id.county);
+        TextView string_type = (TextView)callitem.findViewById(R.id.type);
+
+        // Conversion
+        int callNumber = Integer.parseInt(string_callNumber.getText().toString());
+        char county = string_county.getText().toString().charAt(0);
+        char type = string_type.getText().toString().charAt(0);
+
+        Incident call = OR911.getIntMan().getCallByCallNumberAndType(callNumber, county, type);
+        double lat = call.getCallInfo().getLat();
+        double lon = call.getCallInfo().getLon();
+
+        if (call != null) {
+            // Open Maps
+            String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", lat,lon, lat,lon);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            try
+            {
+                OR911.getContext().startActivity(intent);
+            }
+            catch(ActivityNotFoundException ex) {
+                Toast.makeText(this, "Please install a maps application", Toast.LENGTH_LONG).show();
+            }
+        }
+        return true;
     }
 
     @Override
@@ -52,18 +97,6 @@ public class calllist_page extends AppCompatActivity {
     public void refreshButton(MenuItem menuItem) {
         RefreshCallList thing = new RefreshCallList(OR911, calllist);
         thing.execute();
-    }
-
-    private void createTestCall(int callNumber, String callSum, String address, timestamp ts, String station) {
-        Incident oops = new Incident();
-        callinfo callheader = new callinfo();
-        callheader.setCallNumber(callNumber);
-        callheader.setCallSum(callSum);
-        callheader.setAddress(address);
-        callheader.setStation(station);
-        callheader.setTs(ts);
-        oops.setCallInfo(callheader);
-        OR911.getIntMan().addIncident(oops);
     }
 
 }

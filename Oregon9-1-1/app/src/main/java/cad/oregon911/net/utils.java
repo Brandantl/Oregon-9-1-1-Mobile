@@ -1,13 +1,9 @@
 package cad.oregon911.net;
 
-import android.content.Context;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Brandan on 12/28/2015.
@@ -17,8 +13,6 @@ public class utils {
 
     public static unitStatus getUnitStatus(unit thing) {
         String status[] = thing.getStatus();
-
-        int clearidx = utils.unitStatus.CLEAR.ordinal();
 
         if (!status[utils.unitStatus.CLEAR.ordinal()].equals("00:00:00")) {
             return unitStatus.CLEAR;
@@ -73,9 +67,6 @@ public class utils {
                     JSONObject call = CALLS_LIST.getJSONObject(key);
                     Incident thing = new Incident();
                     callinfo ci = new callinfo();
-
-                    char type;
-
                     ci.setCallNumber(Integer.parseInt(key));
                     ci.setCounty(county);
                     ci.setId(call.getInt("id"));

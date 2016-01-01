@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Oregon 9-1-1</string>
     <string name="refresh">Refresh</string>
+
+    <string name="calllist_context_details">View Details</string>
+    <string name="calllist_context_directions">Get Directions</string>
 </resources>

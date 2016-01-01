@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Coming Soon!
+    <item
+        android:id="@+id/callist_context_details"
+        android:title="@string/calllist_context_details"
+    />
+    -->
+
+    <item
+        android:id="@+id/callist_context_directions"
+        android:title="@string/calllist_context_directions"
+    />
+
+
+</menu>

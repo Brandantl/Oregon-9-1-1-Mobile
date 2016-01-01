@@ -90,7 +90,18 @@ public class IncidentManager {
         return null;
     }
 
-
+    public Incident getCallByCallNumberAndType(int callNumber, char county, char type) {
+        for (int i = 0; i < List.size(); i++) {
+            if (
+                    List.get(i).getCallInfo().getCallNumber() == callNumber &&
+                            List.get(i).getCallInfo().getCounty() == county &&
+                            List.get(i).getCallInfo().getType() == type
+                    ) {
+                return List.get(i);
+            }
+        }
+        return null;
+    }
 
     public int getIncidentIndex(int callNumber, char county) {
         for (int i = 0; i < List.size(); i++) {
