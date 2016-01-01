@@ -43,7 +43,7 @@ public class Oregon911 {
         String JSONHTTP = HTTP.get(APIUrl, 10000);
 
         if (JSONHTTP != null && !JSONHTTP.isEmpty()) {
-            if (JSONHTTP != "null") {
+            if (!JSONHTTP.equals("null\n")) {
                 JSONObject reader;
                 try {
                     reader = new JSONObject(JSONHTTP);
