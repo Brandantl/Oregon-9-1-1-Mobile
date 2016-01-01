@@ -34,8 +34,7 @@ public class calllist_page extends AppCompatActivity {
         calllist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                parent.findViewById(R.id.call_text);
-                TextView calltxt = (TextView)parent.findViewById(R.id.call_text);
+                TextView calltxt = (TextView)view.findViewById(R.id.call_text);
                 Toast.makeText(calllist_page.this, calltxt.getText(), Toast.LENGTH_LONG).show();
             }
         });
